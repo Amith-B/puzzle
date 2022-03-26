@@ -1,3 +1,28 @@
 .App {
   background-color: #282c34;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  position: relative;
+  height: min(60vh, 60vw);
+  width: min(60vh, 60vw);
+}
+
+.piece {
+  position: absolute;
+  background-image: url("https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FydG9vbnxlbnwwfHwwfHw%3D&w=1000&q=80");
+  background-size: min(60vh, 60vw) min(60vh, 60vw);
+  background-repeat: no-repeat;
+  width: 25%;
+  height: 25%;
+  transition: all 0.5s ease-in-out;
+
+  &.empty {
+    background: transparent;
+  }
 }
