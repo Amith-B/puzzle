@@ -90,3 +90,7 @@ export function shuffleArray(array) {
   }
   return arr;
 }
+
+export function checkAllPiecesInActualPosition(arr) {
+  return arr.every((v, i) => v === i);
+}

@@ -12,7 +12,7 @@ function Controls() {
         className="controls__button top-left pointer"
         onClick={isTimerRunning ? pause : start}
       >
-        {isTimerRunning ? "Pause" : timer === 0 ? "Start" : "Continue"}
+        {isTimerRunning ? "Pause" : timer === 0 ? "Start" : "Resume"}
       </button>
       <button className="controls__button top-right">
         {secondsToHms(timer)}
@@ -21,7 +21,7 @@ function Controls() {
         className="controls__button bottom-left pointer"
         onClick={() => reset(!isTimerRunning)}
       >
-        {!isTimerRunning ? "Shuffle" : "Reset"}
+        {!isTimerRunning && timer === 0 ? "Shuffle" : "Reset"}
       </button>
       <button
         className="controls__button bottom-right pointer"

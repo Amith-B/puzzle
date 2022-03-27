@@ -8,12 +8,21 @@ import PuzzleContext from "../context/puzzleContext";
 
 function Peice({ actualPosition }) {
   const [shake, setShake] = useState();
-  const { positionPercentMap, positionMap, swap, imageUrl } =
-    useContext(PuzzleContext);
+  const {
+    positionPercentMap,
+    positionMap,
+    swap,
+    imageUrl,
+    start,
+    isTimerRunning,
+  } = useContext(PuzzleContext);
 
   const handleClick = () => {
-    console.log(actualPosition, positionMap);
     const { isSwappable, swapBetween } = checkSwap(actualPosition, positionMap);
+    if (!isTimerRunning) {
+      start();
+      return;
+    }
     if (isSwappable) {
       swap(swapBetween[0], swapBetween[1], positionMap);
     } else {

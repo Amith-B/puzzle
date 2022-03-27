@@ -3,7 +3,10 @@ import PuzzleContext from "./puzzleContext";
 import { useEffect, useRef, useState } from "react";
 
 import initialData from "./initialData";
-import { shuffleArray } from "../utils/puzzleUtil";
+import {
+  shuffleArray,
+  checkAllPiecesInActualPosition,
+} from "../utils/puzzleUtil";
 
 export default function EditorProvider({ children }) {
   const [positionMap, setPositionMap] = useState(initialData.positionMap);
@@ -11,6 +14,7 @@ export default function EditorProvider({ children }) {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const [imageUrl, setImageUrl] = useState(initialData.images[imageIndex]);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const intervalRef = useRef(null);
 
@@ -35,6 +39,9 @@ export default function EditorProvider({ children }) {
   };
 
   const start = () => {
+    if (checkAllPiecesInActualPosition(positionMap)) {
+      reset(true);
+    }
     clearTimer();
     intervalRef.current = setInterval(() => {
       setTimer((t) => t + 1);
@@ -67,6 +74,10 @@ export default function EditorProvider({ children }) {
       ];
 
       setPositionMap(newPositionMap);
+
+      if (checkAllPiecesInActualPosition(newPositionMap)) {
+        setShowSuccess(true);
+      }
     }
   };
 
@@ -84,6 +95,8 @@ export default function EditorProvider({ children }) {
         imageUrl,
         changeImage,
         swap,
+        showSuccess,
+        setShowSuccess,
       }}
     >
       {children}
