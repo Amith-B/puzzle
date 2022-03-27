@@ -4,29 +4,24 @@ import PuzzleContext from "../context/puzzleContext";
 import Controls from "./controls";
 
 function Puzzle() {
-  const { positionMap, imageUrl } = useContext(PuzzleContext);
+  const { imageUrl } = useContext(PuzzleContext);
 
   return (
     <>
       <Controls />
       <div className="container">
         {Array.from(Array(16).keys()).map((actualPosition) => {
-          return (
-            <Peice
-              key={actualPosition}
-              actualPosition={actualPosition}
-              currentPosition={positionMap[actualPosition]}
-              imageUrl={imageUrl}
-            />
-          );
+          return <Peice key={actualPosition} actualPosition={actualPosition} />;
         })}
       </div>
-      <div
-        className="normal-picture"
-        style={{
-          "background-image": `url(${imageUrl})`,
-        }}
-      ></div>
+      {imageUrl && (
+        <div
+          className="normal-picture"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+          }}
+        ></div>
+      )}
     </>
   );
 }

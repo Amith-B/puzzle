@@ -58,6 +58,18 @@ export default function EditorProvider({ children }) {
     changeImage();
   };
 
+  const swap = (current = undefined, next = undefined, pMap) => {
+    if (current !== undefined && next !== undefined) {
+      const newPositionMap = [...pMap];
+      [newPositionMap[current], newPositionMap[next]] = [
+        newPositionMap[next],
+        newPositionMap[current],
+      ];
+
+      setPositionMap(newPositionMap);
+    }
+  };
+
   return (
     <PuzzleContext.Provider
       value={{
@@ -71,6 +83,7 @@ export default function EditorProvider({ children }) {
         changePicture,
         imageUrl,
         changeImage,
+        swap,
       }}
     >
       {children}

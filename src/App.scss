@@ -12,6 +12,13 @@
   }
 }
 
+.pointer {
+  cursor: pointer;
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
 .controls {
   &__button {
     position: fixed;
@@ -21,13 +28,6 @@
     border: 0;
     font-size: 1.2rem;
     font-weight: bold;
-
-    &.pointer {
-      cursor: pointer;
-      &:hover {
-        filter: brightness(0.8);
-      }
-    }
 
     &.top-left {
       left: 0;
@@ -83,9 +83,41 @@
   width: 25%;
   height: 25%;
   box-shadow: inset 0px 0px 2px black;
-  transition: all 0.5s ease-in-out;
+  transform: var(--position);
+
+  &__with-numbers {
+    background: #ffa031;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  transition: transform 0.5s ease-in-out;
 
   &.empty {
+    box-shadow: none;
     background: transparent;
+  }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: var(--position) rotate(5deg);
+  }
+  25% {
+    transform: var(--position) rotate(-5deg);
+  }
+  50% {
+    transform: var(--position) rotate(5deg);
+  }
+  75% {
+    transform: var(--position) rotate(-5deg);
+  }
+  100% {
+    transform: var(--position) rotate(0deg);
   }
 }

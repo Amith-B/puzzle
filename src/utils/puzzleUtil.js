@@ -1,3 +1,5 @@
+import initialData from "./../context/initialData";
+
 export const getBGPositionFromPercent = (val) => {
   switch (val) {
     case 0.25:
@@ -10,6 +12,44 @@ export const getBGPositionFromPercent = (val) => {
       return "0%";
   }
   return "0%";
+};
+
+export const getPosition = (actualPosition, positionMap) => {
+  return positionMap.findIndex((pIndex) => pIndex === actualPosition);
+};
+
+export const checkSwap = (actualPosition, positionMap) => {
+  let isSwappable = false;
+  let swapBetween = undefined;
+  const position = getPosition(
+    actualPosition,
+    positionMap,
+    initialData.positionPercentMap
+  );
+  // top
+  if (positionMap[position - 4] === 15) {
+    isSwappable = true;
+    swapBetween = [position, position - 4];
+  }
+  // right
+  else if (positionMap[position + 1] === 15) {
+    isSwappable = true;
+    swapBetween = [position, position + 1];
+  }
+  //bottom
+  else if (positionMap[position + 4] === 15) {
+    isSwappable = true;
+    swapBetween = [position, position + 4];
+  }
+  //left
+  else if (positionMap[position - 1] === 15) {
+    isSwappable = true;
+    swapBetween = [position, position - 1];
+  }
+  return {
+    isSwappable,
+    swapBetween,
+  };
 };
 
 export function secondsToHms(d) {
@@ -25,6 +65,15 @@ export function secondsToHms(d) {
   var mDisplay = m > 0 ? m + (m === 1 ? " min, " : " min, ") : "";
   var sDisplay = s > 0 ? s + (s === 1 ? " sec" : " sec") : "";
   return hDisplay + mDisplay + sDisplay;
+}
+
+export function getInverseArray(arr) {
+  const invArr = [];
+  arr.forEach((v, i) => {
+    invArr[v] = i;
+  });
+
+  return invArr;
 }
 
 export function shuffleArray(array) {

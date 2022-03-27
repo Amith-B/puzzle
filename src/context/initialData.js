@@ -22,6 +22,7 @@ const initialData = {
     "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FydG9vbnxlbnwwfHwwfHw%3D&w=1000&q=80",
     "https://www.goodmorningimagesforlover.com/wp-content/uploads/2018/10/cute-panda-pics.jpg",
     "https://wallpaperaccess.com/full/4588325.jpg",
+    undefined,
   ],
 };
 
