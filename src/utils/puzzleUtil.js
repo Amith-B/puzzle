@@ -33,7 +33,10 @@ export const checkSwap = (actualPosition, positionMap) => {
     swapBetween = [position, position - 4];
   }
   // right
-  else if (positionMap[position + 1] === 15) {
+  else if (
+    positionMap[position + 1] === 15 &&
+    ![4, 8, 12].includes(position + 1)
+  ) {
     isSwappable = true;
     swapBetween = [position, position + 1];
   }
@@ -43,7 +46,10 @@ export const checkSwap = (actualPosition, positionMap) => {
     swapBetween = [position, position + 4];
   }
   //left
-  else if (positionMap[position - 1] === 15) {
+  else if (
+    positionMap[position - 1] === 15 &&
+    ![3, 7, 11].includes(position - 1)
+  ) {
     isSwappable = true;
     swapBetween = [position, position - 1];
   }
