@@ -1,11 +1,14 @@
 import "./App.scss";
 import Puzzle from "./components/puzzle";
+import EditorProvider from "./context/puzzleProvider";
 
 function App() {
   return (
-    <div className="App">
-      <Puzzle />
-    </div>
+    <EditorProvider>
+      <div className="App">
+        <Puzzle />
+      </div>
+    </EditorProvider>
   );
 }
 

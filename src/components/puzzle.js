@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import Peice from "./peice";
-import { ratioMap } from "../utils/positionUtils";
+import PuzzleContext from "../context/puzzleContext";
+import Controls from "./controls";
 
 function Puzzle() {
+  const { positionMap, imageUrl } = useContext(PuzzleContext);
+
   return (
-    <div className="container">
-      {Object.keys(ratioMap).map((piecePosition) => {
-        return (
-          <Peice
-            key={piecePosition}
-            actualPosition={piecePosition}
-            shuffledPosition={piecePosition}
-          />
-        );
-      })}
-    </div>
+    <>
+      <Controls />
+      <div className="container">
+        {Array.from(Array(16).keys()).map((actualPosition) => {
+          return (
+            <Peice
+              key={actualPosition}
+              actualPosition={actualPosition}
+              currentPosition={positionMap[actualPosition]}
+              imageUrl={imageUrl}
+            />
+          );
+        })}
+      </div>
+      <div
+        className="normal-picture"
+        style={{
+          "background-image": `url(${imageUrl})`,
+        }}
+      ></div>
+    </>
   );
 }
 

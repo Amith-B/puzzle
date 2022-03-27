@@ -1,15 +1,19 @@
-import React from "react";
-import { getBGPositionFromPercent, ratioMap } from "../utils/positionUtils";
+import React, { useContext } from "react";
+import { getBGPositionFromPercent } from "../utils/puzzleUtil";
+import PuzzleContext from "../context/puzzleContext";
 
-function Peice({ actualPosition, shuffledPosition }) {
+function Peice({ actualPosition, currentPosition, imageUrl }) {
+  const { positionPercentMap } = useContext(PuzzleContext);
+
   return (
     <div
-      className={`piece${actualPosition === "15" ? " empty" : ""}`}
+      className={`piece${actualPosition === 15 ? " empty" : ""}`}
       style={{
-        transform: `translate(calc(min(60vh, 60vw)*${ratioMap[shuffledPosition].x}), calc(min(60vh, 60vw)*${ratioMap[shuffledPosition].y}))`,
+        ...(actualPosition !== 15 && { backgroundImage: `url(${imageUrl})` }),
+        transform: `translate(calc(min(60vh, 60vw)*${positionPercentMap[currentPosition].x}), calc(min(60vh, 60vw)*${positionPercentMap[currentPosition].y}))`,
         backgroundPosition: `${getBGPositionFromPercent(
-          ratioMap[actualPosition].x
-        )} ${getBGPositionFromPercent(ratioMap[actualPosition].y)}`,
+          positionPercentMap[actualPosition].x
+        )} ${getBGPositionFromPercent(positionPercentMap[actualPosition].y)}`,
       }}
     ></div>
   );
