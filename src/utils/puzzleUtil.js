@@ -10,8 +10,9 @@ export const getBGPositionFromPercent = (val) => {
       return "100%";
     case 0:
       return "0%";
+    default:
+      return "0%";
   }
-  return "0%";
 };
 
 export const getPosition = (actualPosition, positionMap) => {
