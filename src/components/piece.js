@@ -15,17 +15,19 @@ function Piece({ actualPosition }) {
     imageUrl,
     start,
     isTimerRunning,
+    playAudio,
   } = useContext(PuzzleContext);
 
   const handleClick = () => {
     const { isSwappable, swapBetween } = checkSwap(actualPosition, positionMap);
     if (!isTimerRunning) {
-      start();
-      return;
+      const isShuffled = start();
+      if (isShuffled) return;
     }
     if (isSwappable) {
       swap(swapBetween[0], swapBetween[1], positionMap);
     } else {
+      playAudio(1);
       setShake(true);
     }
   };

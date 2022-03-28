@@ -18,7 +18,18 @@ const initialData = {
     { x: 0.5, y: 0.75 },
     { x: 0.75, y: 0.75 },
   ],
-  images: ["./image1.jpg", "./image2.jpg", "./image3.jpg", undefined],
+  images: [
+    "./pictures/image1.jpg",
+    "./pictures/image2.jpg",
+    "./pictures/image3.jpg",
+    undefined,
+  ],
+  audio: {
+    swap: "./sounds/swap.mp3",
+    swapFail: "./sounds/swapfail.mp3",
+    shuffle: "./sounds/shuffle.mp3",
+    success: "./sounds/success.mp3",
+  },
 };
 
 export default initialData;

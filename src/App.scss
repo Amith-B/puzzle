@@ -17,6 +17,9 @@
   &:hover {
     filter: brightness(0.8);
   }
+  &:active {
+    filter: brightness(0.6);
+  }
 }
 
 .controls {
@@ -28,6 +31,22 @@
     border: 0;
     font-size: 1.2rem;
     font-weight: bold;
+
+    &__sound {
+      border: 0;
+      background-color: transparent;
+      margin-top: 8px;
+      font-size: 2.5rem;
+
+      &__container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+    }
 
     &.top-left {
       left: 0;

@@ -3,11 +3,29 @@ import PuzzleContext from "../context/puzzleContext";
 import { secondsToHms } from "../utils/puzzleUtil";
 
 function Controls() {
-  const { start, pause, reset, timer, isTimerRunning, changePicture } =
-    useContext(PuzzleContext);
+  const {
+    start,
+    mute,
+    setMute,
+    pause,
+    reset,
+    timer,
+    isTimerRunning,
+    changePicture,
+  } = useContext(PuzzleContext);
 
   return (
     <div className="controls">
+      <div className="controls__button__sound__container">
+        <button
+          className={`pointer controls__button__sound${
+            mute ? " controls__button__sound__mute" : ""
+          }`}
+          onClick={() => setMute(!mute)}
+        >
+          {mute ? "🔇" : "🔊"}
+        </button>
+      </div>
       <button
         className="controls__button top-left pointer"
         onClick={isTimerRunning ? pause : start}
