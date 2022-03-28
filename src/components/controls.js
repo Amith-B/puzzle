@@ -19,7 +19,7 @@ function Controls() {
       </button>
       <button
         className="controls__button bottom-left pointer"
-        onClick={() => reset(!isTimerRunning)}
+        onClick={() => reset(!isTimerRunning && timer === 0)}
       >
         {!isTimerRunning && timer === 0 ? "Shuffle" : "Reset"}
       </button>
