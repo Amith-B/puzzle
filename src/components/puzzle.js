@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Peice from "./peice";
+import Piece from "./piece";
 import PuzzleContext from "../context/puzzleContext";
 import Controls from "./controls";
 import { secondsToHms } from "../utils/puzzleUtil";
@@ -23,7 +23,7 @@ function Puzzle() {
           </div>
         )}
         {Array.from(Array(16).keys()).map((actualPosition) => {
-          return <Peice key={actualPosition} actualPosition={actualPosition} />;
+          return <Piece key={actualPosition} actualPosition={actualPosition} />;
         })}
       </div>
       {imageUrl && (

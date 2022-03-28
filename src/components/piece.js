@@ -6,7 +6,7 @@ import {
 } from "../utils/puzzleUtil";
 import PuzzleContext from "../context/puzzleContext";
 
-function Peice({ actualPosition }) {
+function Piece({ actualPosition }) {
   const [shake, setShake] = useState();
   const {
     positionPercentMap,
@@ -62,4 +62,4 @@ function Peice({ actualPosition }) {
   );
 }
 
-export default Peice;
+export default Piece;
