@@ -59,7 +59,7 @@ function Piece({ actualPosition }) {
         )} ${getBGPositionFromPercent(positionPercentMap[actualPosition].y)}`,
       }}
     >
-      {!imageUrl && !isEmptyPiece && actualPosition}
+      {!imageUrl && !isEmptyPiece && actualPosition + 1}
     </div>
   );
 }
