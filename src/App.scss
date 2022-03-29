@@ -119,11 +119,12 @@
   animation: shake 0.3s ease-in-out;
 }
 
-.game-success {
+.game-success,
+.piece-match {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #4ee54e;
+  background: #4ee54e69;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -131,6 +132,10 @@
   font-size: 1.2rem;
   font-weight: bold;
   animation: success-blink 4s ease-in-out;
+}
+
+.piece-match {
+  animation: none;
 }
 
 @keyframes shake {

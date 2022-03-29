@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
   getBGPositionFromPercent,
   checkSwap,
@@ -8,6 +8,8 @@ import PuzzleContext from "../context/puzzleContext";
 
 function Piece({ actualPosition }) {
   const [shake, setShake] = useState();
+  const [pieceMatch, setPieceMatch] = useState(false);
+  const [transitionEnd, setTransitionEnd] = useState(true);
   const {
     positionPercentMap,
     positionMap,
@@ -16,7 +18,20 @@ function Piece({ actualPosition }) {
     start,
     isTimerRunning,
     playAudio,
+    timer,
+    showSuccess,
   } = useContext(PuzzleContext);
+
+  useEffect(() => {
+    const currentPosition = getPosition(actualPosition, positionMap);
+    if (timer !== 0 || isTimerRunning) {
+      if (currentPosition === actualPosition && transitionEnd) {
+        setPieceMatch(true);
+        return;
+      }
+    }
+    setPieceMatch(false);
+  }, [actualPosition, positionMap, isTimerRunning, timer, transitionEnd]);
 
   const handleClick = () => {
     const { isSwappable, swapBetween } = checkSwap(actualPosition, positionMap);
@@ -25,6 +40,7 @@ function Piece({ actualPosition }) {
       if (isShuffled) return;
     }
     if (isSwappable) {
+      setTransitionEnd(false);
       swap(swapBetween[0], swapBetween[1], positionMap);
     } else {
       playAudio(1);
@@ -42,6 +58,7 @@ function Piece({ actualPosition }) {
   return (
     <div
       onAnimationEnd={() => setShake(false)}
+      onTransitionEnd={() => setTransitionEnd(true)}
       className={`piece${isEmptyPiece ? " empty" : " pointer"}${
         imageUrl ? "" : " piece__with-numbers"
       }${shake ? " shake" : ""}`}
@@ -60,6 +77,9 @@ function Piece({ actualPosition }) {
       }}
     >
       {!imageUrl && !isEmptyPiece && actualPosition + 1}
+      {pieceMatch && !isEmptyPiece && !showSuccess && (
+        <div className="piece-match"></div>
+      )}
     </div>
   );
 }
