@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 
-const useAudio = (urls) => {
-  const [sources] = useState(
-    urls.map((url) => {
-      return {
-        url,
-        audio: new Audio(url),
-      };
-    })
-  );
+const useAudio = (urlMap) => {
+  const [sources] = useState(urlMap);
 
   const [mute, setMute] = useState(false);
 
@@ -18,7 +11,7 @@ const useAudio = (urls) => {
   }, [mute]);
 
   const [players, setPlayers] = useState(
-    urls.map((url) => {
+    urlMap.map(({ url }) => {
       return {
         url,
         playing: false,

@@ -16,12 +16,7 @@ export default function EditorProvider({ children }) {
   const [imageIndex, setImageIndex] = useState(0);
   const [imageUrl, setImageUrl] = useState(initialData.images[imageIndex]);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [playAudio, mute, setMute] = useAudio([
-    initialData.audio.swap,
-    initialData.audio.swapFail,
-    initialData.audio.shuffle,
-    initialData.audio.success,
-  ]);
+  const [playAudio, mute, setMute] = useAudio(initialData.audioData);
 
   const intervalRef = useRef(null);
 

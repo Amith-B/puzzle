@@ -1,3 +1,10 @@
+const audioUrls = [
+  "./sounds/swap.mp3",
+  "./sounds/swapfail.mp3",
+  "./sounds/shuffle.mp3",
+  "./sounds/success.mp3",
+];
+
 const initialData = {
   positionMap: Array.from(Array(16).keys()),
   positionPercentMap: [
@@ -24,12 +31,12 @@ const initialData = {
     "./pictures/image3.jpg",
     undefined,
   ],
-  audio: {
-    swap: "./sounds/swap.mp3",
-    swapFail: "./sounds/swapfail.mp3",
-    shuffle: "./sounds/shuffle.mp3",
-    success: "./sounds/success.mp3",
-  },
+  audioData: audioUrls.map((url) => {
+    return {
+      url,
+      playing: false,
+    };
+  }),
 };
 
 export default initialData;
