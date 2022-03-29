@@ -34,7 +34,7 @@ const initialData = {
   audioData: audioUrls.map((url) => {
     return {
       url,
-      playing: false,
+      audio: new Audio(url),
     };
   }),
 };
