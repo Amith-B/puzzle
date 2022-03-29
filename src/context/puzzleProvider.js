@@ -83,6 +83,7 @@ export default function EditorProvider({ children }) {
 
       if (checkAllPiecesInActualPosition(newPositionMap)) {
         playAudio(3);
+        pause();
         setShowSuccess(true);
       }
     }

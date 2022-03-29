@@ -10,6 +10,7 @@ function Controls() {
     pause,
     reset,
     timer,
+    showSuccess,
     isTimerRunning,
     changePicture,
   } = useContext(PuzzleContext);
@@ -18,15 +19,14 @@ function Controls() {
     <div className="controls">
       <div className="controls__button__sound__container">
         <button
-          className={`pointer controls__button__sound${
-            mute ? " controls__button__sound__mute" : ""
-          }`}
+          className={`pointer controls__button__sound`}
           onClick={() => setMute(!mute)}
         >
           {mute ? "🔇" : "🔊"}
         </button>
       </div>
       <button
+        disabled={showSuccess}
         className="controls__button top-left pointer"
         onClick={isTimerRunning ? pause : start}
       >
@@ -36,12 +36,14 @@ function Controls() {
         {secondsToHms(timer)}
       </button>
       <button
+        disabled={showSuccess}
         className="controls__button bottom-left pointer"
         onClick={() => reset(!isTimerRunning && timer === 0)}
       >
         {!isTimerRunning && timer === 0 ? "Shuffle" : "Reset"}
       </button>
       <button
+        disabled={showSuccess}
         className="controls__button bottom-right pointer"
         onClick={changePicture}
       >
