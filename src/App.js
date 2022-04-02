@@ -1,4 +1,3 @@
-import "./App.scss";
 import Puzzle from "./components/puzzle";
 import PuzzleProvider from "./context/puzzleProvider";
 import { useEffect } from "react";
@@ -16,9 +15,7 @@ function App() {
 
   return (
     <PuzzleProvider>
-      <div className="App">
-        <Puzzle />
-      </div>
+      <Puzzle />
     </PuzzleProvider>
   );
 }

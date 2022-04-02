@@ -14,7 +14,7 @@ function Puzzle() {
   };
 
   return (
-    <>
+    <div className="puzzle">
       <Controls />
       <div className="container">
         {showSuccess && (
@@ -34,7 +34,7 @@ function Puzzle() {
           }}
         ></div>
       )}
-    </>
+    </div>
   );
 }
 
