@@ -1,6 +1,6 @@
 import PuzzleContext from "./puzzleContext";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import initialData from "./initialData";
 import {
@@ -9,7 +9,7 @@ import {
 } from "../utils/puzzleUtil";
 import useAudio from "../hooks/useAudio";
 
-export default function EditorProvider({ children }) {
+export default function PuzzleProvider({ children }) {
   const [positionMap, setPositionMap] = useState(initialData.positionMap);
   const [timer, setTimer] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -19,8 +19,6 @@ export default function EditorProvider({ children }) {
   const [playAudio, mute, setMute] = useAudio(initialData.audioData);
 
   const intervalRef = useRef(null);
-
-  useEffect(() => {}, []);
 
   const changeImage = () => {
     const newIndex = imageIndex + 1;

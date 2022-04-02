@@ -1,6 +1,6 @@
 import "./App.scss";
 import Puzzle from "./components/puzzle";
-import EditorProvider from "./context/puzzleProvider";
+import PuzzleProvider from "./context/puzzleProvider";
 import { useEffect } from "react";
 import initialData from "./context/initialData";
 
@@ -15,11 +15,11 @@ function App() {
   }, []);
 
   return (
-    <EditorProvider>
+    <PuzzleProvider>
       <div className="App">
         <Puzzle />
       </div>
-    </EditorProvider>
+    </PuzzleProvider>
   );
 }
 
