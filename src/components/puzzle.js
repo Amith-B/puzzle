@@ -19,7 +19,7 @@ function Puzzle() {
       <div className="container">
         {showSuccess && (
           <div className="game-success" onAnimationEnd={handleAnimationEnd}>
-            Finished In: {secondsToHms(timer)}
+            Completed In: {secondsToHms(timer)}
           </div>
         )}
         {Array.from(Array(16).keys()).map((actualPosition) => {
