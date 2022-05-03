@@ -2,6 +2,11 @@
 
 Visit [Picture Puzzle](https://effulgent-sunburst-3c955f.netlify.app/) which is hosted in Netlify
 
+### Website link
+<p>
+ <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://effulgent-sunburst-3c955f.netlify.app/" alt="Picture Puzzle website link"/> 
+</p>
+ 
 ### To run in local
 
 `npm start`
