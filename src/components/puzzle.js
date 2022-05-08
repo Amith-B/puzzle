@@ -17,7 +17,7 @@ function Puzzle() {
     <div className="puzzle">
       <Controls />
       <div className="github-link">
-        <a href="https://github.com/Amith-B/puzzle" target="_blank">
+        <a href="https://github.com/Amith-B/puzzle" target="_blank" rel="noreferrer">
           <img alt="github" src="./github.svg" title="Amith-B GitHub" />
         </a>
       </div>
