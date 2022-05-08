@@ -16,6 +16,11 @@ function Puzzle() {
   return (
     <div className="puzzle">
       <Controls />
+      <div className="github-link">
+        <a href="https://github.com/Amith-B/puzzle" target="_blank">
+          <img alt="github" src="./github.svg" title="Amith-B GitHub" />
+        </a>
+      </div>
       <div className="container">
         {showSuccess && (
           <div className="game-success" onAnimationEnd={handleAnimationEnd}>

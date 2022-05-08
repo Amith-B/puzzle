@@ -152,6 +152,18 @@ code {
   animation: none;
 }
 
+.github-link {
+  position: fixed;
+  left: 0;
+  padding: 4px;
+
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    filter: invert(1);
+  }
+}
+
 @keyframes shake {
   0%,
   50% {
