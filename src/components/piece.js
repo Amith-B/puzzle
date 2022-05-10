@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext, useState, useMemo } from "react";
 import {
   getBGPositionFromPercent,
   checkSwap,
@@ -48,12 +48,12 @@ function Piece({ actualPosition }) {
     }
   };
 
-  const isEmptyPiece = actualPosition === 15;
+  const isEmptyPiece = useMemo(() => actualPosition === 15, [actualPosition]);
 
-  const getPositionPercent = () => {
+  const getPositionPercent = useMemo(() => {
     const pos = positionPercentMap[getPosition(actualPosition, positionMap)];
     return pos;
-  };
+  }, [actualPosition, positionMap, positionPercentMap]);
 
   return (
     <div
@@ -68,9 +68,7 @@ function Piece({ actualPosition }) {
       style={{
         ...(!isEmptyPiece &&
           imageUrl && { backgroundImage: `url(${imageUrl})` }),
-        "--position": `translate(calc(min(60vh, 60vw)*${
-          getPositionPercent().x
-        }), calc(min(60vh, 60vw)*${getPositionPercent().y}))`,
+        "--position": `translate(calc(min(60vh, 60vw)*${getPositionPercent.x}), calc(min(60vh, 60vw)*${getPositionPercent.y}))`,
         backgroundPosition: `${getBGPositionFromPercent(
           positionPercentMap[actualPosition].x
         )} ${getBGPositionFromPercent(positionPercentMap[actualPosition].y)}`,
